@@ -16,8 +16,13 @@ import java.io.IOException;
 
 final class MyJSONParser implements JSONParser {
 
+    private string input="";
   @Override
   public JSON parse(String in) throws IOException {
+      
+    input=in.trim();
+    System.out.println("testing this");
+    
     // TODO: implement this
     return new MyJSON();
   }
