@@ -13,6 +13,7 @@
 package com.intelligent.codeu.codingchallenge;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 final class MyJSON implements JSON {
     
