@@ -16,7 +16,7 @@ import java.io.IOException;
 
 final class MyJSONParser implements JSONParser {
 
-    private string input="";
+    private String input="";
   @Override
   public JSON parse(String in) throws IOException {
       
