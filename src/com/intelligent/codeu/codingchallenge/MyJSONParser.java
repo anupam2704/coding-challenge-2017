@@ -67,7 +67,7 @@ final class MyJSONParser implements JSONParser {
             {
                 if(input.charAt(position!=','))
                 {
-                    throw new IOEXception("no comma in between key value pair"+position);
+                    throw new IOException("no comma in between key value pair"+ position);
                 }
                 else
                     position++;
