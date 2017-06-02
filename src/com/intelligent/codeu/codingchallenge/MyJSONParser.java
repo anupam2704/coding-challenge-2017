@@ -60,12 +60,12 @@ final class MyJSONParser implements JSONParser {
         MyJSON data = new MyJSON();
         blankSpace();
         int numEntries=0;
-        while(input.charAt(position!='}'))
+        while(input.charAt(position)!='}'))
         {
             blankSpace();
             if(numEntries>0)
             {
-                if(input.charAt(position!=','))
+                if(input.charAt(position)!=','))
                 {
                     throw new IOException("no comma in between key value pair"+ position);
                 }
