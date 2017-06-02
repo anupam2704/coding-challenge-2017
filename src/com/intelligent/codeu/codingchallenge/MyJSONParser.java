@@ -56,16 +56,8 @@ final class MyJSONParser implements JSONParser {
     
 
 
-    public void blankSpace()
-    {
-        char next=input.charAt(position);
-        while(Character.isWhiteSpace(next))
-        {
-            next=input.charAt(++position);
-        }
-    }
     
-    
+    @Override
     public JSON parseRecursive throws IOException{
         MyJSON data = new MyJSON();
         blankSpace();
@@ -146,7 +138,15 @@ final class MyJSONParser implements JSONParser {
     }
 
     
-
+    public void blankSpace()
+    {
+        char next=input.charAt(position);
+        while(Character.isWhiteSpace(next))
+        {
+            next=input.charAt(++position);
+        }
+    }
+    
 
     public String getString() throws IOException
     {
