@@ -137,7 +137,7 @@ final class MyJSONParser implements JSONParser {
     public void blankSpace()
     {
         char next=input.charAt(position);
-        while(Character.isWhiteSpace(next))
+        while(Character.isWhitespace(next))
         {
             next=input.charAt(++position);
         }
