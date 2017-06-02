@@ -49,7 +49,7 @@ final class MyJSONParser implements JSONParser {
       }
       // TODO: implement this
    // return new MyJSON();
-  }
+  };
     
     
     
