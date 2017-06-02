@@ -21,11 +21,11 @@ final class TestMain {
 
     final Tester tests = new Tester();
 
-    tests.add("Empty Object", new Test() {
+    tests.add("Empty Object", new Test() { //Test to check for empty object
       @Override
       public void run(JSONFactory factory) throws Exception {
         final JSONParser parser = factory.parser();
-        final JSON obj = parser.parse("{ \"name\":{\"first\":\"sam\", \"last\":\"doe\" } }");
+        final JSON obj = parser.parse("{ }"); //empty object is provided, so it result PASS
 
         final Collection<String> strings = new HashSet<>();
         obj.getStrings(strings);
@@ -39,17 +39,17 @@ final class TestMain {
       }
     });
 
-    tests.add("String Value", new Test() {
+    tests.add("String Value", new Test() { //Test to check for corresponding string value
       @Override
       public void run(JSONFactory factory) throws Exception {
         final JSONParser parser = factory.parser();
-        final JSON obj = parser.parse("{ \"name\":\"sam doe\" }");
+        final JSON obj = parser.parse("{ \"name\":\"sam doe\" }"); 
 
-        Asserts.isEqual("sam doe", obj.getString("name"));
+        Asserts.isEqual("sam doe", obj.getString("name")); //it will result PASS
      }
     });
 
-    tests.add("Object Value", new Test() {
+    tests.add("Object Value", new Test() { //Test to check for value of the object
       @Override
       public void run(JSONFactory factory) throws Exception {
 
@@ -59,79 +59,70 @@ final class TestMain {
         final JSON nameObj = obj.getObject("name");
 
         Asserts.isNotNull(nameObj);
-        Asserts.isEqual("sam", nameObj.getString("first"));
+        Asserts.isEqual("sam", nameObj.getString("first")); //it will result PASS
         Asserts.isEqual("doe", nameObj.getString("last"));
       }
     });
       
-    tests.add("Value with extra colons to test", new Test() {
+    tests.add("Missing Colon Test", new Test() { //This test will point out missing colon in the syntax
         @Override
         public void run(JSONFactory factory) throws Exception {
 
           final JSONParser parser = factory.parser();
-          final JSON obj = parser.parse("{ \"name\":{\"first\": \"sam\", \"last\":\"doe\" } }");
+          final JSON obj = parser.parse("{ \"name\":{\"first\"\"sam\", \"last\":\"doe\" } }"); //json with colon missing
 
-          final JSON nameObj = obj.getObject("name:");
+        final JSON nameObj = obj.getObject("name");
 
-          Asserts.isNotNull(nameObj);
-          Asserts.isEqual("sam::", nameObj.getString("fir:::st"));
-          Asserts.isEqual("doe", nameObj.getString("l:ast"));
+        Asserts.isNotNull(nameObj);
+        Asserts.isEqual("sam", nameObj.getString("first"));
+        Asserts.isEqual("doe", nameObj.getString("last"));  //it will result FAIL
         }
       });
    
-    tests.add("Testing extra commas", new Test() {
+    tests.add("Testing Missing Comma", new Test() { //This test will point out missing comma in the syntax
+        @Override
+        public void run(JSONFactory factory) throws Exception {
+
+                    final JSONParser parser = factory.parser();
+          final JSON obj = parser.parse("{ \"name\":{\"first\":\"sam\" \"last\":\"doe\" } }"); //json without comma
+
+        final JSON nameObj = obj.getObject("name");
+
+        Asserts.isNotNull(nameObj);
+        Asserts.isEqual("sam", nameObj.getString("first"));
+        Asserts.isEqual("doe", nameObj.getString("last"));      //it will result FAIL
+        }
+      });
+
+    tests.add("Testing Escaped Characters in Strings", new Test() { //This test will verify the syntax for presence of illegal escape characters
         @Override
         public void run(JSONFactory factory) throws Exception {
 
           final JSONParser parser = factory.parser();
-          final JSON obj = parser.parse("{ \"name\":{\"first\":\"sam\", \"last\":\"doe\" } }");
+           final JSON obj = parser.parse("{ \\\"escaped\":\\\\\"characters\"}"); //illegeal escape characters
+            final String string = obj.getString("escaped");
+              
 
-          final JSON nameObj = obj.getObject("name:");
-
-          Asserts.isNotNull(nameObj);
-          Asserts.isEqual("sam::", nameObj.getString("fir:::st"));
-          Asserts.isEqual("doe", nameObj.getString("l:ast"));
+            Asserts.isEqual("characters",string); //it will result FAIL
+          
         }
       });
 
-    tests.add("Testing escaped characters in strings", new Test() {
-        @Override
-        public void run(JSONFactory factory) throws Exception {
 
-          final JSONParser parser = factory.parser();
-          final JSON obj = parser.parse("{ \"name\":{\"first\":\"sam\", \"last\":\"doe\" } }");
-
-          final JSON nameObj = obj.getObject("name:");
-
-          Asserts.isNotNull(nameObj);
-          Asserts.isEqual("sam::", nameObj.getString("fir:::st"));
-          Asserts.isEqual("doe", nameObj.getString("l:ast"));
-        }
-      });
-
-    tests.add("Testing whitespace", new Test() {
-        @Override
-        public void run(JSONFactory factory) throws Exception {
-
-          final JSONParser parser = factory.parser();
-          final JSON obj = parser.parse("{\n \"hello\":\"no\" }");
-          final String s = obj.getString("hello");
-
-          Asserts.isEqual("no", s);
-        }
-      });
-
-      tests.add("Testing characters in the beginnning", new Test() {
+      tests.add("Testing Characters If Present At Start", new Test() { //This test will check for characters present at the beginning
           @Override
           public void run(JSONFactory factory) throws Exception {
 
             final JSONParser parser = factory.parser();
-            final JSON obj = parser.parse("fdfsfd{\n \"hello\":\"no\" }");
-            final String s = obj.getString("hello");
+            final JSON obj = parser.parse("extrachar{ \"testing\":\"characters\" }"); //extra characters present at the bginning
+            final String string = obj.getString("testing");
+              
 
-            Asserts.isEqual("no", s);
+            Asserts.isEqual("characters",string); //this will result FAIL
           }
         });
+      
+      //Asserts.isEqual() will assert that two parameters in its function are equal and will return values accordingly(boolenan value)
 
     tests.run(new JSONFactory(){
       @Override

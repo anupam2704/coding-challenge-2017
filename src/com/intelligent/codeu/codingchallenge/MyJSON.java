@@ -18,50 +18,53 @@ import java.util.HashMap;
 final class MyJSON implements JSON {
     
     
-    HashMap<String,JSON> objects = new HashMap<String,JSON>();
-	HashMap<String,String> strings = new HashMap<String,String>();
+    //HashMap structure is used here for handling of data.
+    HashMap<String,JSON> objects = new HashMap<String,JSON>(); //HashMap for objects
+	HashMap<String,String> strings = new HashMap<String,String>(); //HashMap for strings
 
   @Override
-  public JSON getObject(String name) {
-    // TODO: implement this
-      if(objects.containsKey(name)){
-		return objects.get(name);
-	}
-    return null;
+  public JSON getObject(String name) 
+  {
+      if(objects.containsKey(name))
+      {
+		return objects.get(name);         //method to get the values for object
+      }
+        return null;
   }
 
   @Override
-  public JSON setObject(String name, JSON value) {
-    // TODO: implement this
+  public JSON setObject(String name, JSON value) 
+  {
        objects.put(name,value);
-    return this;
+       return this;                     //method to set the values for object
   }
 
   @Override
-  public String getString(String name) {
-    // TODO: implement this
-      if(strings.containsKey(name)){
-			return strings.get(name);
-		}
-    return null;
+  public String getString(String name) 
+  {
+      if(strings.containsKey(name))
+      {
+			return strings.get(name);     //method to get the values for string
+      }
+        return null;
   }
 
   @Override
-  public JSON setString(String name, String value) {
-    // TODO: implement this
+  public JSON setString(String name, String value) 
+  {
       strings.put(name, value);
-    return this;
+      return this;                   //method to set the values string
   }
 
   @Override
-  public void getObjects(Collection<String> names) {
-    // TODO: implement this
-      names.addAll(objects.keySet());
+  public void getObjects(Collection<String> names) 
+  {
+      names.addAll(objects.keySet());   //method to get all objects
   }
 
   @Override
-  public void getStrings(Collection<String> names) {
-    // TODO: implement this
-      names.addAll(strings.keySet());
+  public void getStrings(Collection<String> names)
+  {
+      names.addAll(strings.keySet());   //method to get all strings
   }
 }
