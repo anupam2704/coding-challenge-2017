@@ -35,12 +35,12 @@ final class MyJSONParser implements JSONParser {
           JSON data=parseRecursive();
           if(position<input.length())
           {
-              if(Pattern.compile("\S").matcher(input.substring(position)).find())
+              if(Pattern.compile("\\S").matcher(input.substring(position)).find())
               {
-                  throw new IOException("Extra characters found at end");
+                  return data;
               }
               else
-                  return data;
+                  throw new IOException("Extra characters found at end");
           }
           else
               return data;
