@@ -141,11 +141,8 @@ final class MyJSONParser implements JSONParser {
         {
             next=input.charAt(++position);
         }
-        return null;
     }
     
-
-    @Override
     public String getString() throws IOException
     {
 	  int startIndex = position+1;
