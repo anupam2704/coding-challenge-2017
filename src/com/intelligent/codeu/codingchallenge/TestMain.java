@@ -25,7 +25,7 @@ final class TestMain {
       @Override
       public void run(JSONFactory factory) throws Exception {
         final JSONParser parser = factory.parser();
-        final JSON obj = parser.parse("{ }");
+        final JSON obj = parser.parse("{ \"name\":\"god\" }");
 
         final Collection<String> strings = new HashSet<>();
         obj.getStrings(strings);
