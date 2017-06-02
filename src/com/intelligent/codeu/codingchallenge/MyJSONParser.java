@@ -53,12 +53,9 @@ final class MyJSONParser implements JSONParser {
     
     
     
-    
-
-
-    
     @Override
-    public JSON parseRecursive throws IOException{
+    public JSON parseRecursive throws IOException
+    {
         MyJSON data = new MyJSON();
         blankSpace();
         int numEntries=0;
