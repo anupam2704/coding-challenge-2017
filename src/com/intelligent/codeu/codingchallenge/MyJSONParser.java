@@ -48,7 +48,7 @@ final class MyJSONParser implements JSONParser {
           throw new IOException("Extra character found at beginnning");
       }
       // TODO: implement this
-    return new MyJSON();
+   // return new MyJSON();
   }
     
     
@@ -66,7 +66,7 @@ final class MyJSONParser implements JSONParser {
     }
     
     
-    public JSON parseSyntax throws IOException{
+    public JSON parseRecursive throws IOException{
         MyJSON data = new MyJSON();
         blankSpace();
         int numEntries=0;
