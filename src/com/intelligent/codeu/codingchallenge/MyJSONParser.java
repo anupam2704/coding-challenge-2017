@@ -90,7 +90,7 @@ final class MyJSONParser implements JSONParser {
 	    		position++;
 	    	}
 
-	    	skipWhiteSpace();
+	    	blankSpace();
             
             char beginningValue = input.charAt(position);
             
@@ -127,7 +127,7 @@ final class MyJSONParser implements JSONParser {
 				}
 	        }
 
-	        skipWhiteSpace();
+	        blankSpace();
 
 	      }
           return data;
