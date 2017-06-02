@@ -142,6 +142,7 @@ final class MyJSONParser implements JSONParser {
         {
             next=input.charAt(++position);
         }
+        return null;
     }
     
 
