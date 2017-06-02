@@ -49,8 +49,7 @@ final class MyJSONParser implements JSONParser {
       {
           throw new IOException("Extra character found at beginnning");
       }
-      // TODO: implement this
-   // return new MyJSON();
+    return new MyJSON();
   }
 
 
