@@ -27,7 +27,7 @@ final class MyJSON implements JSON {
   {
       if(objects.containsKey(name))
       {
-		return objects.get(name);         //method to get the values for object
+		return objects.get(name);         //method  to get the values for object
       }
         return null;
   }

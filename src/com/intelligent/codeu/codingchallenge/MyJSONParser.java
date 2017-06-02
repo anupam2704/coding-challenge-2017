@@ -114,7 +114,7 @@ final class MyJSONParser implements JSONParser {
 				}
 	        }
             
-            else if(initial_value=='{') //if the value to begin with is '{'
+            else if(initial_value=='{') // if the value to begin with is '{'
             {
 	            position++;
 	        	count++;
