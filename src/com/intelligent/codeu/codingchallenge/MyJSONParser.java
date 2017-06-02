@@ -49,11 +49,8 @@ final class MyJSONParser implements JSONParser {
       }
       // TODO: implement this
    // return new MyJSON();
-  };
-    
-    
-    
-    @Override
+  }
+}
     public JSON parseRecursive throws IOException
     {
         MyJSON data = new MyJSON();
@@ -184,4 +181,3 @@ final class MyJSONParser implements JSONParser {
   	return str;
   }
 
-}
