@@ -99,7 +99,7 @@ final class TestMain {
         public void run(JSONFactory factory) throws Exception {
 
           final JSONParser parser = factory.parser();
-          final JSON obj = parser.parse("{ \"name:\\\"\\\"\\\":{\":\"ir:::st\" , \"sa\\nm::\":\"hello\"  , \"l:ast\":\"doe\" }} }");
+          final JSON obj = parser.parse("{ \"name\":{\"first\":\"sam\", \"last\":\"doe\" } }");
 
           final JSON nameObj = obj.getObject("name:");
 
