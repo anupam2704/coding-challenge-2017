@@ -171,13 +171,12 @@ final class MyJSONParser implements JSONParser {
   			}
   		}
 	  }
-    else 
-    {
+      else 
+      {
 	 // System.out.println(input.substring(index));
-	       throw new IOException("invalid input. please try again. position " + position);
-	       throw new IOException("invalid input. please try again. position " + position);
-    }
-  	position++;
-  	return str;
+	       throw new IOException("invalid input" + position);
+      }
+  	  position++;
+  	  return str;
   }
 }
