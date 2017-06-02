@@ -25,7 +25,7 @@ final class MyJSONParser implements JSONParser {
   {
       
     input=in.trim();
-    //System.out.println(input);
+    System.out.println(input);
       
     position=1;
     
