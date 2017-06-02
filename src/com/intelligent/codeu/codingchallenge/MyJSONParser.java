@@ -21,7 +21,8 @@ final class MyJSONParser implements JSONParser {
     private int position;
     
   @Override
-  public JSON parse(String in) throws IOException {
+  public JSON parse(String in) throws IOException
+  {
       
     input=in.trim();
     System.out.println(input);
@@ -55,7 +56,7 @@ final class MyJSONParser implements JSONParser {
 
     
     @Override
-    public JSON parseRecursive throws IOException
+    public JSON parseRecursive() throws IOException
     {
         MyJSON data = new MyJSON();
         blankSpace();
